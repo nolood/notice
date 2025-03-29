@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package template;
+
+option go_package = "nolood.template.v1;templatev1";
+
+service TemplateService {
+  rpc AddTemplate (AddTemplateRequest) returns (AddTemplateResponse);
+  rpc GetTemplates (GetTemplatesRequest) returns (GetTemplatesResponse);
+  rpc UpdateTemplate (UpdateTemplateRequest) returns (UpdateTemplateResponse);
+  rpc DeleteTemplate (DeleteTemplateRequest) returns (DeleteTemplateResponse);
+}
+
+message AddTemplateRequest {
+  string app_id = 1;
+  string name = 2;
+  string content = 3;
+}
+
+message AddTemplateResponse {
+  string id = 1;
+  string name = 2;
+}
+
+message GetTemplatesRequest {
+  string app_id = 1;
+}
+
+message GetTemplatesResponse {
+  repeated Template templates = 1;
+}
+
+message Template {
+  string id = 1;
+  string name = 2;
+  string content = 3;
+}
+
+message UpdateTemplateRequest {
+  string app_id = 1;
+  string id = 2;
+  string name = 3;
+  string content = 4;
+}
+
+message UpdateTemplateResponse {
+  string id = 1;
+  string name = 2;
+  string content = 3;
+}
+
+message DeleteTemplateRequest {
+  string app_id = 1;
+  string id = 2;
+}
+
+message DeleteTemplateResponse {
+  string id = 1;
+}

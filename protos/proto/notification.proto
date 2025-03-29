@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package notification;
+
+option go_package = "nolood.notification.v1;notificationv1";
+
+service NotificationService {
+  rpc SendNotification (SendNotificationRequest) returns (SendNotificationResponse);
+  rpc CheckNotificationStatus (CheckNotificationStatusRequest) returns (CheckNotificationStatusResponse);
+}
+
+message SendNotificationRequest {
+  string app_id = 1;
+  repeated Channel channels = 2;
+}
+
+message Channel {
+  string name = 1;
+  string template_id = 2;
+  map<string, string> params = 3;
+}
+
+message SendNotificationResponse {
+  string id = 1;
+  string status = 2;
+}
+
+message CheckNotificationStatusRequest {
+  string app_id = 1;
+  string id = 2;
+}
+
+
+message ChannelStatus {
+  string name = 1;
+  string status = 2;
+}
+
+message CheckNotificationStatusResponse {
+  string id = 1;
+  repeated ChannelStatus channels = 2;
+}
