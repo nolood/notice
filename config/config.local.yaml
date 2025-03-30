@@ -1,0 +1,7 @@
+env: "dev" # dev, test, prod
+storage:
+  db_url: "postgres://notice:noticeSecret@localhost:5401/notice"
+grpc:
+  port: 44044
+  timeout: 5s
+  

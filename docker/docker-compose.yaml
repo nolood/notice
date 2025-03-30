@@ -1,0 +1,11 @@
+services:
+  notice-db:
+    container_name: notice-db
+    image: postgres:17.4-alpine3.21
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: noticeSecret
+      POSTGRES_USER: notice
+      POSTGRES_DB: notice
+    ports:
+      - 5401:5432
